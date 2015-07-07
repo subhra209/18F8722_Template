@@ -1,6 +1,6 @@
 #include "board.h"
 #include "timer.h"
-
+#include "uart.h"
 
 /*
  * For PIC18xxxx devices, the low interrupt vector is found at 000000018h.
@@ -25,7 +25,18 @@ void high_interrupt (void)
 		_asm GOTO TMR1_ISR _endasm
 	}
 
+#ifdef __18F8722_H
+	if(PIR1bits.RC1IF == 1)
+	{
+		_asm GOTO Uart1_ReceiveHandler _endasm
+	}
+#else
 
+	if(PIR1bits.RCIF == 1)
+	{
+		_asm GOTO UartReceiveHandler _endasm
+	}
+#endif
 
 
 }

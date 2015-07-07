@@ -165,10 +165,36 @@ void BRD_init(unsigned long systemFreauency )
 	TX1_EN_DIR 		= PORT_OUT;
 	TX1_EN 			= SWITCH_OFF;
 
+	TX2_EN_DIR 		= PORT_OUT;
+	TX2_EN 			= SWITCH_OFF;
+
 	// Configure Serial port
+	SER2_TX_DIR 		=  PORT_OUT;
+	SER2_RX_DIR 		=  PORT_IN;
+
 	SER1_TX_DIR 		=  PORT_OUT;
 	SER1_RX_DIR 		=  PORT_IN;
 
+#ifdef __BOARD_PIN_TESTING__
+
+	LED1_DIR = PORT_OUT;
+	LED2_DIR = PORT_OUT;
+	LED3_DIR = PORT_OUT;
+	LED4_DIR = PORT_OUT;
+	LED5_DIR = PORT_OUT;
+	LED6_DIR = PORT_OUT;
+	LED7_DIR = PORT_OUT;
+	LED8_DIR = PORT_OUT;
+
+	LED1 = 0;
+	LED2 = 0;
+	LED3 = 0;
+	LED4 = 0;
+	LED5 = 0;
+	LED6 = 0;
+	LED7 = 0;
+	LED8 = 0;
+#endif
 
 
 

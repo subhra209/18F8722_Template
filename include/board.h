@@ -40,15 +40,22 @@
 */
 
 
-
-// Heart Beat
-
-
-
+// HeartBeat
+#define		HEART_BEAT				PORTGbits.RG0			// high - OFF, Low - ON
+#define		HEART_BEAT_DIR			TRISGbits.TRISG0
 
 // Rs485 / RS232 Serial commnunicaton port
 #define		TX1_EN					PORTGbits.RG3			// TX control for RS485 communication
 #define		TX1_EN_DIR				TRISGbits.TRISG3
+#define		TX2_EN					PORTGbits.RG4			// TX control for RS485 communication
+#define		TX2_EN_DIR				TRISGbits.TRISG4
+
+
+#define 	SER2_TX					PORTGbits.RG1 		// serial transmit
+#define		SER2_TX_DIR				TRISGbits.TRISG1
+#define 	SER2_RX					PORTGbits.RG2			// serial receive
+#define		SER2_RX_DIR				TRISGbits.TRISG2
+
 
 #define 	SER1_TX					PORTCbits.RC6 		// serial transmit
 #define		SER1_TX_DIR				TRISCbits.TRISC6
@@ -56,11 +63,26 @@
 #define		SER1_RX_DIR				TRISCbits.TRISC7
 
 
+#ifdef __BOARD_PIN_TESTING__
 
-// HeartBeat
-#define		HEART_BEAT				PORTGbits.RG0			// high - OFF, Low - ON
-#define		HEART_BEAT_DIR			TRISGbits.TRISG0
+#define		LED1			PORTA
+#define 	LED1_DIR		TRISA
+#define		LED2			PORTB
+#define 	LED2_DIR		TRISB
+#define		LED3			PORTC
+#define 	LED3_DIR		TRISC
+#define		LED4			PORTD
+#define 	LED4_DIR		TRISD
+#define		LED5			PORTE
+#define 	LED5_DIR		TRISE
+#define		LED6			PORTF
+#define 	LED6_DIR		TRISF
+#define		LED7			PORTH
+#define 	LED7_DIR		TRISH
+#define		LED8			PORTJ
+#define 	LED8_DIR		TRISJ
 
+#endif
 
 			
 /*

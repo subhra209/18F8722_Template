@@ -95,7 +95,7 @@ enum
 *	APP CONFIGURATION
 *----------------------------------------*/
 
-
+//#define __BOARD_PIN_TESTING__
 
 
 /*

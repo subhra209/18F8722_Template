@@ -36,6 +36,9 @@
 #include "board.h"
 #include "timer.h"	// Timer related functions
 #include "heartBeat.h"
+#include "uart.h"
+#include "communication.h"
+#include "app.h"
 
 /*
 *------------------------------------------------------------------------------
@@ -108,6 +111,7 @@ extern UINT16 eMBUpdate_count;
 */
 void EnableInterrupts(void);
 extern UINT16 heartBeatCount ;
+extern UINT16 appUpdateCount;
 extern UINT16 comUpdateCount ;
 extern UINT16 mmdUpdateCount;
 /*
@@ -168,6 +172,9 @@ void main(void)
 
 	TMR0_init(TICK_PERIOD,0);	//initialize timer0
 
+	COM_init(CMD_SOP,CMD_EOP,RESP_SOP,RESP_EOP,APP_comCallBack);
+
+	APP_init();
 
 	EnableInterrupts();
 
@@ -175,13 +182,19 @@ void main(void)
 	while(1)
 	{
 
-		if(  heartBeatCount >= 2000 )
+		if(  heartBeatCount >= 1000 )
 		{
 	
 			HB_task();
 			heartBeatCount = 0;
+		}
+
+		if( appUpdateCount >= 500 )
+		{
+			APP_task();
 		}		
- 
+
+ 		COM1_task();
 		//ClrWdt();	
 	}
 }
